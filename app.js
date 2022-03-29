@@ -1,7 +1,3 @@
-var player = 0
-var computer = 0
-var wins = 0
-var loses = 0
 function askName() {
     var name = prompt("Please enter your name")
     return name
@@ -9,11 +5,11 @@ function askName() {
 function genRand(){
     var ran = Math.floor(Math.random() * 10) + 1;
 }
-function userNum(random,player){
+function userNum(random){
     do {
         var player = player + random;
         alert(`You drew ${random}. Your total is ${player} `);
-        if (userTotal > 20) {
+        if (player > 20) {
             alert("You went over 20 the computer automatically wins");
             var loses = loses + 1;  
             break;
@@ -21,13 +17,18 @@ function userNum(random,player){
         var userquest = prompt("Would you like another card? Press y if you do.");
     } while (userquest == "y");
 }
-function compNum(random,computer){
+function compNum(random){
     do {
         var computer = computer + random;
         alert(`The computer drew ${random}. The computer's total is ${computer} `);
+        if (player > 20) {
+            alert("The computer went over 20 the you automatically win");
+            var wins = wins + 1;  
+            break;
+        }
     } while (compTotal < 16);
 }
-function compNum(computer, player){
+function numComp(computer, player){
     if((player > computer) && (player < 21)) {
  
         alert(`The user won, the computer had ${computer} and the user had ${player}`);
@@ -37,4 +38,18 @@ function compNum(computer, player){
         alert(`The computer won, the user had ${player} and the computer had ${computer}`)
         var loses = loses + 1;
     }
+
+}
+function gameStart(){
+    var player = 0
+    var computer = 0
+    var wins = 0
+    var loses = 0
+    do{
+        var player = userNum(genRand())
+        numComp(compNum(),userNum())
+
+
+        var gameplay = prompt("Would you like another card? Press y if you do.");
+    }while(gameplay =="y")
 }
