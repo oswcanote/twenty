@@ -1,9 +1,14 @@
+var player = 0
+var computer = 0
+var wins = 0
+var loses = 0
 function askName() {
     var name = prompt("Please enter your name")
-    return name
+    return name;
 }
 function genRand(){
     var ran = Math.floor(Math.random() * 10) + 1;
+    return ran;
 }
 function userNum(random){
     do {
@@ -21,7 +26,7 @@ function compNum(random){
     do {
         var computer = computer + random;
         alert(`The computer drew ${random}. The computer's total is ${computer} `);
-        if (player > 20) {
+        if (computer```` > 20) {
             alert("The computer went over 20 the you automatically win");
             var wins = wins + 1;  
             break;
@@ -41,15 +46,12 @@ function numComp(computer, player){
 
 }
 function gameStart(){
-    var player = 0
-    var computer = 0
-    var wins = 0
-    var loses = 0
+    numComp(compNum(),userNum());
     do{
-        var player = userNum(genRand())
-        numComp(compNum(),userNum())
+        gameStart();
 
 
         var gameplay = prompt("Would you like another card? Press y if you do.");
     }while(gameplay =="y")
 }
+gameStart();
